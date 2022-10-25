@@ -65,6 +65,37 @@ vid valet ”Visa bokningar”)
 
 */
 
+/* ---------------
+ * WPF:
+ * ---------------
+ * DatePicker
+ * Val av tid
+ * Val av bord
+ * Inmatningsfält för namn
+ * Knapp: Boka
+ * Knapp: Visa bokningar
+ * Listbox: Lista av alla bordsbokningar
+ *      > Linq?
+ * Knapp: Avboka markerad bokning i listbox
+ * ---------------
+ * *************
+ * ---------------
+ * OOP:
+ * ---------------
+ * Bokningsklass - Interface här?
+ *      > Properties: datum, tid, namn, bordsnummer
+ * ---------------
+ * *************
+ * ---------------
+ * Filhantering:
+ * ---------------
+ * Metod: skriva bokning till fil
+ *      > Metod: kontrollera bokning
+ * Metod: hämta bokningar från fil
+ *      > Asynkront?
+ * ---------------
+ */
+
 
 
 
@@ -78,6 +109,18 @@ namespace Labb_3___WPF_Applikation
         public MainWindow()
         {
             InitializeComponent();
+            //listBoxBookings.Items.Add :Selected = "ListBoxItem_Selected"
+        }
+
+        //funktioner för att avaktivera/aktivera avbokningsknappen beroende på vad som är markerat
+        private void listBoxBookings_LostFocus(object sender, RoutedEventArgs e)
+        {
+            buttonCancelBooking.IsEnabled = false;
+        }
+
+        private void listBoxBookings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            buttonCancelBooking.IsEnabled = true;
         }
     }
 }

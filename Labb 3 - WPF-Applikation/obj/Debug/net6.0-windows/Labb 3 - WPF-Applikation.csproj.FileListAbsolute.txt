@@ -1,0 +1,21 @@
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\bin\Debug\net6.0-windows\Labb 3 - WPF-Applikation.exe
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\bin\Debug\net6.0-windows\Labb 3 - WPF-Applikation.deps.json
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\bin\Debug\net6.0-windows\Labb 3 - WPF-Applikation.runtimeconfig.json
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\bin\Debug\net6.0-windows\Labb 3 - WPF-Applikation.dll
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\bin\Debug\net6.0-windows\Labb 3 - WPF-Applikation.pdb
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.csproj.AssemblyReference.cache
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation_MarkupCompile.cache
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation_MarkupCompile.lref
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.g.resources
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.AssemblyInfoInputs.cache
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.AssemblyInfo.cs
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.csproj.CoreCompileInputs.cache
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.dll
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\refint\Labb 3 - WPF-Applikation.dll
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.pdb
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\Labb 3 - WPF-Applikation.genruntimeconfig.cache
+C:\Users\ruben\source\repos\Labb 3 - WPF-Applikation\Labb 3 - WPF-Applikation\obj\Debug\net6.0-windows\ref\Labb 3 - WPF-Applikation.dll
