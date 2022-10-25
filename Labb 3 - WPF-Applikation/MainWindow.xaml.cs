@@ -93,6 +93,7 @@ vid valet ”Visa bokningar”)
  *      > Metod: kontrollera bokning
  * Metod: hämta bokningar från fil
  *      > Asynkront?
+ * 
  * ---------------
  */
 
