@@ -107,10 +107,52 @@ namespace Labb_3___WPF_Applikation
     /// </summary>
     public partial class MainWindow : Window
     {
+        FileHandler fileHandler = new FileHandler();
         public MainWindow()
         {
             InitializeComponent();
-            //listBoxBookings.Items.Add :Selected = "ListBoxItem_Selected"
+            //bordsnummer
+            for (int i = 1; i < 6; i++)
+            {
+                comboBoxTableNumber.Items.Add(i);
+            }
+            //tider 16-22
+            for (int i = 0; i < 6; i++)
+            {
+                comboBoxTime.Items.Add($"{16 + i}:00");
+                if(i < 5) comboBoxTime.Items.Add($"{16 + i}:30");
+
+            }
+        }
+
+        //samla input och lagra bokning
+        private void buttonConfirmBooking_Click(object sender, RoutedEventArgs e) //async?
+        {
+
+            //TODOfelhantering
+            //-----------------------
+
+
+            string name = Convert.ToString(textBoxName.Text);
+            int tableNumber = Convert.ToInt32(comboBoxTableNumber.SelectedValue);
+            string bookingTime = Convert.ToString(comboBoxTableNumber.SelectedValue);
+            DateTime bookingDate = Convert.ToDateTime(datePicker.SelectedDate);
+
+            Booking newBooking = new Booking(name, tableNumber, bookingTime, bookingDate);
+            fileHandler.StoreBooking(newBooking.ToStorageFormat());
+            MessageBox.Show("bokat!");
+        }
+
+        //lista bokningar i listbox
+        private void buttonShowBookings_Click(object sender, RoutedEventArgs e) //async, LINQ?
+        {
+            listBoxBookings.Items.Clear();
+            List <Booking> bookingList = fileHandler.GetBookings(); 
+
+            foreach (var booking in bookingList)
+            {
+                listBoxBookings.Items.Add(booking.ToDisplayFormat());
+            }
         }
 
         //funktioner för att avaktivera/aktivera avbokningsknappen beroende på vad som är markerat
@@ -123,5 +165,7 @@ namespace Labb_3___WPF_Applikation
         {
             buttonCancelBooking.IsEnabled = true;
         }
+
+        
     }
 }
