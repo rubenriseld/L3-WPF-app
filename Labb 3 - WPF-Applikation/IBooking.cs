@@ -12,7 +12,7 @@ namespace Labb_3___WPF_Applikation
         //public int tableNumber { get; set; }
         public string bookingTime { get; set; }
         public DateTime bookingDate { get; set; }
-
+    
         string ToStorageFormat();
         string ToDisplayFormat();
     }

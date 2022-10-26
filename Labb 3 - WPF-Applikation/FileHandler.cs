@@ -20,6 +20,19 @@ namespace Labb_3___WPF_Applikation
                 sw.WriteLine(bookingInStorageFormat);
             };
         }
+        internal void CancelBooking(string bookingInStorageFormat)
+        {
+            //skapar temporär fil för att kunna skriva om filen med bokningar utan 
+            //bokningen som ska tas bort
+            var tempFile = Path.GetTempFileName();
+            var linesToKeep = File.ReadLines("bookings.txt").Where(l => l != bookingInStorageFormat);
+
+            File.WriteAllLines(tempFile, linesToKeep);
+
+            File.Delete("bookings.txt");
+            File.Move(tempFile, "bookings.txt");
+            
+        }
 
         internal List<Booking> GetBookings()
         {

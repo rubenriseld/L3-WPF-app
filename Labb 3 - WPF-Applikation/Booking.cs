@@ -13,6 +13,7 @@ namespace Labb_3___WPF_Applikation
         public string bookingTime { get; set; }
         public DateTime bookingDate { get; set; }
 
+
         public Booking(string name, int tableNumber, string bookingTime, DateTime bookingDate)
         {
             this.name = name;

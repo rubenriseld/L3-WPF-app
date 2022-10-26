@@ -50,7 +50,7 @@
             <ComboBoxItem>5</ComboBoxItem>-->
         </ComboBox>
         <!--<TextBox x:Name="textBoxTime" Grid.Column="2" Grid.Row="4" Margin="5" Text="00:00"></TextBox>-->
-        <ComboBox x:Name="comboBoxTime" Grid.Column="2" Grid.Row="4" Margin="5" SelectedIndex="0">
+        <ComboBox x:Name="comboBoxBookingTime" Grid.Column="2" Grid.Row="4" Margin="5" SelectedIndex="0">
             <!--<ComboBoxItem>16:00</ComboBoxItem>
             <ComboBoxItem>17:00</ComboBoxItem>
             <ComboBoxItem>18:00</ComboBoxItem>
@@ -83,7 +83,8 @@
         <!--Knapp för att isa bokningar-->
         <Button x:Name="buttonShowBookings" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="120" Margin="5" Click="buttonShowBookings_Click">Visa Bokningar</Button>
         <!--Avbokningsknapp-->
-        <Button x:Name="buttonCancelBooking" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Margin="5" IsEnabled="False">Avboka</Button>
+        <Button x:Name="buttonCancelBooking" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Margin="5"  Click="buttonCancelBooking_Click">Avboka</Button>
+        <!--IsEnabled="False"-->
 
     </Grid>
 </Window>
