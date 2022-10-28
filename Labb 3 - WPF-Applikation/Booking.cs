@@ -10,29 +10,24 @@ namespace Labb_3___WPF_Applikation
     {
         public string name { get; set; }
         public int tableNumber { get; set; }
-        public string bookingTime { get; set; }
-        public DateTime bookingDate { get; set; }
-
-
-        public Booking(string name, int tableNumber, string bookingTime, DateTime bookingDate)
+        public DateTime bookingDateTime { get; set; }
+        public Booking(string name, int tableNumber, DateTime bookingDateTime)
         {
             this.name = name;
             this.tableNumber = tableNumber;
-            this.bookingTime = bookingTime;
-            this.bookingDate = bookingDate;
+            this.bookingDateTime = bookingDateTime;
         }
         public string ToStorageFormat()
         {
-            string ymd = bookingDate.Year.ToString() + "/" + bookingDate.Month.ToString() + "/" + bookingDate.Day.ToString();
-            return $"{name},{tableNumber},{bookingTime},{ymd}";
+            return $"{name},{tableNumber},{bookingDateTime}";
         }
         public string ToDisplayFormat()
         {
-            string ymd = bookingDate.Year.ToString() + "/" + bookingDate.Month.ToString() + "/" + bookingDate.Day.ToString();
+            string dateTimeDisplay = bookingDateTime.Year.ToString() + "/" + bookingDateTime.Month.ToString() + "/" + bookingDateTime.Day.ToString();
             return $"Namn: {name}\n" +
                     $"Bordsnummer: {tableNumber}\n" +
-                    $"Tid: {bookingTime}\n" +
-                    $"Datum: {ymd}";
+                    $"Tid: {bookingDateTime.ToString("HH:mm")}\n" +
+                    $"Datum: {dateTimeDisplay}";
         }
     }
 }

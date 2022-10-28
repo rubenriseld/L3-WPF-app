@@ -40,50 +40,31 @@
         <TextBlock Grid.Column="1" Grid.Row="5" Margin="5" VerticalAlignment="Center">Datum:</TextBlock>
 
         <!--Inmatningsfält-->
-        <TextBox x:Name="textBoxName" Grid.Column="2" Grid.Row="2" Margin="5"></TextBox>
-        <!--<TextBox x:Name="textBoxTableNumber" Grid.Column="2" Grid.Row="3" Margin="5"></TextBox>-->
-        <ComboBox x:Name="comboBoxTableNumber" Grid.Column="2" Grid.Row="3" Margin="5" SelectedIndex="0">
-            <!--<ComboBoxItem>1</ComboBoxItem>
-            <ComboBoxItem>2</ComboBoxItem>
-            <ComboBoxItem>3</ComboBoxItem>
-            <ComboBoxItem>4</ComboBoxItem>
-            <ComboBoxItem>5</ComboBoxItem>-->
-        </ComboBox>
-        <!--<TextBox x:Name="textBoxTime" Grid.Column="2" Grid.Row="4" Margin="5" Text="00:00"></TextBox>-->
-        <ComboBox x:Name="comboBoxBookingTime" Grid.Column="2" Grid.Row="4" Margin="5" SelectedIndex="0">
-            <!--<ComboBoxItem>16:00</ComboBoxItem>
-            <ComboBoxItem>17:00</ComboBoxItem>
-            <ComboBoxItem>18:00</ComboBoxItem>
-            <ComboBoxItem>19:00</ComboBoxItem>
-            <ComboBoxItem>20:00</ComboBoxItem>
-            <ComboBoxItem>21:00</ComboBoxItem>
-            <ComboBoxItem>22:00</ComboBoxItem>-->
-        </ComboBox>
-        <DatePicker x:Name="datePicker" Grid.Column="2" Grid.Row="5" Margin="5"></DatePicker>
+        <TextBox x:Name="textBoxName" Grid.Column="2" Grid.Row="2" Margin="5"/>
+        <ComboBox x:Name="comboBoxTableNumber" Grid.Column="2" Grid.Row="3" Margin="5" SelectedIndex="0"/>
+        <ComboBox x:Name="comboBoxBookingTime" Grid.Column="2" Grid.Row="4" Margin="5" SelectedIndex="0"/>
+        <DatePicker x:Name="datePicker" Grid.Column="2" Grid.Row="5" Margin="5"/>
 
         <!--Bokningsknapp-->
         <Button x:Name="buttonConfirmBooking" Grid.Column="2" Grid.Row="7" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Margin="5" Click="buttonConfirmBooking_Click">Boka</Button>
-
+        <!--Bokningsinfo-->
+        <TextBlock Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" FontSize="12" FontStyle="Italic" Margin="5">*Bokningar är giltiga 3 timmar från utsatt tid.</TextBlock>
+        
         <!--Lista över bokningar-->
         <TextBlock Grid.Column="4" Grid.Row="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center">Bokningslista</TextBlock>
-        <ListBox x:Name="listBoxBookings" Grid.Column="4" Grid.Row="2" Grid.RowSpan="6" Margin="5" LostFocus="listBoxBookings_LostFocus" SelectionChanged="listBoxBookings_SelectionChanged">
+        <ListBox x:Name="listBoxBookings" Grid.Column="4" Grid.Row="2" Grid.RowSpan="6" Margin="5" SelectionChanged="listBoxBookings_SelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="5"/>
                 </Style>
             </ListBox.ItemContainerStyle>
-            <!--<ListBoxItem>hej</ListBoxItem>
-            <ListBoxItem>hej</ListBoxItem>
-            <ListBoxItem>hej</ListBoxItem>
-            <ListBoxItem>hej</ListBoxItem>
-            <ListBoxItem>hej</ListBoxItem>
-            <ListBoxItem>hej</ListBoxItem>
-            <ListBoxItem>hej</ListBoxItem>-->
         </ListBox>
-        <!--Knapp för att isa bokningar-->
+        
+        <!--Knapp för att visa bokningar-->
         <Button x:Name="buttonShowBookings" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="120" Margin="5" Click="buttonShowBookings_Click">Visa Bokningar</Button>
+        
         <!--Avbokningsknapp-->
-        <Button x:Name="buttonCancelBooking" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Margin="5"  Click="buttonCancelBooking_Click">Avboka</Button>
+        <Button x:Name="buttonCancelBooking" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Margin="5" IsEnabled="False" Click="buttonCancelBooking_Click">Avboka</Button>
         <!--IsEnabled="False"-->
 
     </Grid>

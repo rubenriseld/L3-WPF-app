@@ -97,9 +97,6 @@ vid valet ”Visa bokningar”)
  * ---------------
  */
 
-
-
-
 namespace Labb_3___WPF_Applikation
 {
     /// <summary>
@@ -121,86 +118,91 @@ namespace Labb_3___WPF_Applikation
             {
                 comboBoxBookingTime.Items.Add($"{16 + i}:00");
                 if (i < 5) comboBoxBookingTime.Items.Add($"{16 + i}:30");
-
             }
         }
 
         //samla input och lagra bokning
-        private void buttonConfirmBooking_Click(object sender, RoutedEventArgs e) //async?
+        private async void buttonConfirmBooking_Click(object sender, RoutedEventArgs e) //async?
         {
 
             //TODO:
             //felhantering
             //-----------------------
 
-
             string name = Convert.ToString(textBoxName.Text);
             int tableNumber = Convert.ToInt32(comboBoxTableNumber.SelectedValue);
-            string bookingTime = Convert.ToString(comboBoxBookingTime.SelectedValue);
+
+            DateTime bookingTime = Convert.ToDateTime(comboBoxBookingTime.SelectedValue);
             DateTime bookingDate = Convert.ToDateTime(datePicker.SelectedDate);
 
-            Booking newBooking = new Booking(name, tableNumber, bookingTime, bookingDate);
-            fileHandler.StoreBooking(newBooking.ToStorageFormat());
-            MessageBox.Show("bokat!");
+            DateTime bookingDateTime = new DateTime(bookingDate.Year, 
+                                                    bookingDate.Month,
+                                                    bookingDate.Day, 
+                                                    bookingTime.Hour, 
+                                                    bookingTime.Minute, 0);
+
+            Booking newBooking = new Booking(name, tableNumber, bookingDateTime);
+            await fileHandler.StoreBooking(newBooking);
         }
 
         //lista bokningar i listbox
         private void buttonShowBookings_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: async, LINQ?
-            updateBookingList();
+            UpdateBookingListAsync();
         }
 
         private void buttonCancelBooking_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: async, LINQ?
-
             //hämta Booking-objektet från den valda bokningen i listan, för enklare konvertering till
             //textformatet som krävs för att radera bokningen
-            Booking temp = (Booking)(((FrameworkElement)(listBoxBookings.SelectedItem)).DataContext);
+            Booking selectedBooking = (Booking)(((FrameworkElement)(listBoxBookings.SelectedItem)).DataContext);
 
-            string bookingToCancel = temp.ToStorageFormat();
+            string bookingToCancel = selectedBooking.ToStorageFormat();
             fileHandler.CancelBooking(bookingToCancel);
 
-            MessageBox.Show("avbokat!");
+            MessageBox.Show("Avbokat!");
 
-            updateBookingList();
+            UpdateBookingListAsync();
+            buttonCancelBooking.IsEnabled = false;
         }
-        public void updateBookingList()
+
+
+        private async Task UpdateBookingListAsync()
         {
             listBoxBookings.Items.Clear();
 
-            List<Booking> bookingList = fileHandler.GetBookings();
+            //TODO:
+            //ladda in och sortera asynkront?
+            //----------------
 
+            List<Booking> bookingList = await fileHandler.GetBookingsAsync();
+
+            //sortera bokningar efter datum
             var query =
                 from booking in bookingList
-                orderby booking.bookingDate ascending
+                orderby booking.bookingDateTime ascending
                 select booking;
 
             foreach (var booking in query)
             {
-                ListBoxItem addedBooking = new ListBoxItem();
-
-                //ger alla items innehåll (bokningsinfo) samt data i form av ett Booking-objekt
-                //för att enkelt kunna avboka
-                addedBooking.Content = booking.ToDisplayFormat();
-                addedBooking.DataContext = booking;
-
-                listBoxBookings.Items.Add(addedBooking);
+                AddToList(booking);
+                await Task.Delay(10);
             }
         }
-
-        //funktioner för att avaktivera/aktivera avbokningsknappen beroende på vad som är markerat
-        private void listBoxBookings_LostFocus(object sender, RoutedEventArgs e)
+        private void AddToList(Booking booking)
         {
-            //buttonCancelBooking.IsEnabled = false;
-        }
+            ListBoxItem addedBooking = new ListBoxItem();
 
+            //ger alla items innehåll (bokningsinfo) samt data i form av ett Booking-objekt för att enkelt kunna avboka
+            addedBooking.Content = booking.ToDisplayFormat();
+            addedBooking.DataContext = booking;
+
+            listBoxBookings.Items.Add(addedBooking);
+        }
+        //aktivera avbokningsknappen om en bokning är markerad
         private void listBoxBookings_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //buttonCancelBooking.IsEnabled = true;
+            buttonCancelBooking.IsEnabled = true;
         }
-
-
     }
 }

@@ -9,10 +9,7 @@ namespace Labb_3___WPF_Applikation
     internal interface IBooking
     {
         public string name { get; set; }
-        //public int tableNumber { get; set; }
-        public string bookingTime { get; set; }
-        public DateTime bookingDate { get; set; }
-    
+        public DateTime bookingDateTime { get; set; }
         string ToStorageFormat();
         string ToDisplayFormat();
     }
