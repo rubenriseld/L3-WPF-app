@@ -13,7 +13,7 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -25,7 +25,6 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -43,12 +42,12 @@
         <TextBox x:Name="textBoxName" Grid.Column="2" Grid.Row="2" Margin="5"/>
         <ComboBox x:Name="comboBoxTableNumber" Grid.Column="2" Grid.Row="3" Margin="5" SelectedIndex="0"/>
         <ComboBox x:Name="comboBoxBookingTime" Grid.Column="2" Grid.Row="4" Margin="5" SelectedIndex="0"/>
-        <DatePicker x:Name="datePicker" Grid.Column="2" Grid.Row="5" Margin="5"/>
+        <DatePicker x:Name="datePicker" Grid.Column="2" Grid.Row="5" Margin="5" FirstDayOfWeek="Monday" Text="asf"/>
 
         <!--Bokningsknapp-->
         <Button x:Name="buttonConfirmBooking" Grid.Column="2" Grid.Row="7" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Margin="5" Click="buttonConfirmBooking_Click">Boka</Button>
         <!--Bokningsinfo-->
-        <TextBlock Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" FontSize="12" FontStyle="Italic" Margin="5">*Bokningar är giltiga 3 timmar från utsatt tid.</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" FontSize="12" FontStyle="Italic" Margin="5">*Bokningar är giltiga 2 timmar från utsatt tid.</TextBlock>
         
         <!--Lista över bokningar-->
         <TextBlock Grid.Column="4" Grid.Row="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center">Bokningslista</TextBlock>
@@ -61,10 +60,10 @@
         </ListBox>
         
         <!--Knapp för att visa bokningar-->
-        <Button x:Name="buttonShowBookings" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="120" Margin="5" Click="buttonShowBookings_Click">Visa Bokningar</Button>
+        <Button x:Name="buttonShowBookings" Grid.Column="4" Grid.Row="8" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="120" Margin="5" Click="buttonShowBookings_Click">Visa Bokningar</Button>
         
         <!--Avbokningsknapp-->
-        <Button x:Name="buttonCancelBooking" Grid.Column="4" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Margin="5" IsEnabled="False" Click="buttonCancelBooking_Click">Avboka</Button>
+        <Button x:Name="buttonCancelBooking" Grid.Column="4" Grid.Row="8" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Margin="5" IsEnabled="False" Click="buttonCancelBooking_Click">Avboka</Button>
         <!--IsEnabled="False"-->
 
     </Grid>

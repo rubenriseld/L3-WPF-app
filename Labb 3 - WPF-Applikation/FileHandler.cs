@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace Labb_3___WPF_Applikation
 {
-    internal class FileHandler 
+    internal class FileHandler
     {
         internal async Task StoreBooking(Booking booking)
         {
@@ -27,20 +27,20 @@ namespace Labb_3___WPF_Applikation
             List<Booking> bookings = await GetBookingsAsync();
             foreach (var storedBooking in bookings)
             {
-                //kontrollerar bordsnummer
-                if(booking.tableNumber == storedBooking.tableNumber)
+                //varje bokning gäller 2 timmar från bokad tid
+                //och det går därför inte att boka en ny tid på samma bord
+                //inom 2 timmar före eller efter en tidigare bokning
+                if (booking.tableNumber == storedBooking.tableNumber)
                 {
-                    //kontrollerar tidsram (går ej att boka samma bord inom 3 timmar efter tidigare bokning)
-                    if(booking.bookingDateTime >= storedBooking.bookingDateTime 
-                        && booking.bookingDateTime <= storedBooking.bookingDateTime.AddHours(3))
+                    if (booking.bookingDateTime >= storedBooking.bookingDateTime.AddHours(-2)
+                    && booking.bookingDateTime <= storedBooking.bookingDateTime.AddHours(2))
                     {
-                        MessageBox.Show($"Bord nummer {storedBooking.tableNumber}" +
-                           $" är bokat från kl {storedBooking.bookingDateTime.ToString("HH:mm")}" +
-                           $"-{storedBooking.bookingDateTime.AddHours(3).ToString("HH:mm")}. " +
-                           $"Vänligen välj ett annat bord, tid eller datum!");
+                        MessageBox.Show($"Bord nummer {booking.tableNumber}" +
+                            $" är redan bokat den {booking.bookingDateTime.ToString("dd/MM/yy")}" +
+                            $" kl {storedBooking.bookingDateTime.ToString("HH:mm")}" +
+                            $", vänligen välj en annan tid eller ett annat datum!");
                         return false;
                     }
-                    return true;
                 }
             }
             return true;
@@ -71,7 +71,7 @@ namespace Labb_3___WPF_Applikation
                 while ((line = await sr.ReadLineAsync()) != null)
                 {
                     var stringArray = line.Split(',');
-                    bookings.Add(new Booking(stringArray[0], Convert.ToInt32(stringArray[1]), Convert.ToDateTime(stringArray[2])));
+                    bookings.Add(new Booking(stringArray[0], Convert.ToInt32(stringArray[1]), Convert.ToDateTime(stringArray[2]), stringArray[3]));
                 }
             };
             return bookings;

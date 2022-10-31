@@ -18,13 +18,13 @@ using System.Windows.Shapes;
 - Användaren kan ange datum, tid, namn och bordsnummer och klicka på
 ”Boka” för att skapa en bordsbokning. [1] Om det datum, tid och bord som
 ska bokas redan är bokat ska bokningen inte gå att genomföra.
-Användaren ska meddelas om detta så att det går att försöka igen.
+Användaren ska meddelas om detta så att det går att försöka igen. X
 
 - Användaren kan klicka på en ”Visa bokningar” för att lista alla
-bordsbokningar.
+bordsbokningar. X
 
 - Användaren kan markera en bokning och klicka på avboka för att avboka
-en bordsbokning.
+en bordsbokning. X
 
 **************************
 
@@ -33,35 +33,35 @@ RIKTLINJER
 - När programmet startar ska det finnas ett antal bokningar lagrade redo
 att visas.
 
-- Programmet ska hantera oförutsägbara fel.
+- Programmet ska hantera oförutsägbara fel. X
 
 **************************
 
 KRAV
 
-- Felhantering med try-catch alternativt TryParse eller liknande
+- Felhantering med try-catch alternativt TryParse eller liknande ?
 
-- Klass/klasser
+- Klass/klasser X
 
-- Metoder
+- Metoder X
 
-- Iteration
+- Iteration X
 
-- Selektion
+- Selektion X
 
 - Endast 5 bord ska tillåtas vara bokade samma datum och tid. Till
 exempel: Är 5 bord bokade 2022-10-28 kl. 21.00 ska inte ännu ett bord gå
 att boka 2022-10-28 kl. 21.00. Om ännu ett bord försöker bokas ska
-användaren meddelas om detta så att det går att försöka igen.
+användaren meddelas om detta så att det går att försöka igen. X
 
-- LINQ
+- LINQ X
 
-- Skalbar lösning med abstrakta klasser/interface
+- Skalbar lösning med abstrakta klasser/interface X
 
 - Filhantering (uppdatera fil vid bokning och avbokning samt läsa från fil
-vid valet ”Visa bokningar”)
+vid valet ”Visa bokningar”) X
 
-- Asynkrona metoder 
+- Asynkrona metoder ?
 
 */
 
@@ -99,16 +99,12 @@ vid valet ”Visa bokningar”)
 
 namespace Labb_3___WPF_Applikation
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         FileHandler fileHandler = new FileHandler();
         public MainWindow()
         {
             InitializeComponent();
-            //bordsnummer
             for (int i = 1; i < 6; i++)
             {
                 comboBoxTableNumber.Items.Add(i);
@@ -122,26 +118,37 @@ namespace Labb_3___WPF_Applikation
         }
 
         //samla input och lagra bokning
-        private async void buttonConfirmBooking_Click(object sender, RoutedEventArgs e) //async?
+        private async void buttonConfirmBooking_Click(object sender, RoutedEventArgs e)
         {
+            //felhantering för namn och datum
+            if (textBoxName.Text == "" || textBoxName.Text == null)
+            {
+                MessageBox.Show("Vänligen ange namn för bokningen!");
+                return;
+            }
+            if (datePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Vänligen välj ett datum!");
+                return;
+            }
 
-            //TODO:
-            //felhantering
-            //-----------------------
-
+            //skapa ny bokning utifrån inputfälten
             string name = Convert.ToString(textBoxName.Text);
             int tableNumber = Convert.ToInt32(comboBoxTableNumber.SelectedValue);
 
             DateTime bookingTime = Convert.ToDateTime(comboBoxBookingTime.SelectedValue);
             DateTime bookingDate = Convert.ToDateTime(datePicker.SelectedDate);
 
-            DateTime bookingDateTime = new DateTime(bookingDate.Year, 
+            DateTime bookingDateTime = new DateTime(bookingDate.Year,
                                                     bookingDate.Month,
-                                                    bookingDate.Day, 
-                                                    bookingTime.Hour, 
+                                                    bookingDate.Day,
+                                                    bookingTime.Hour,
                                                     bookingTime.Minute, 0);
 
-            Booking newBooking = new Booking(name, tableNumber, bookingDateTime);
+            //använder datetime för att skapa en unik ID för varje ny bokning
+            string bookingID = DateTime.Now.Ticks.ToString("x");
+
+            Booking newBooking = new Booking(name,tableNumber, bookingDateTime, bookingID);
             await fileHandler.StoreBooking(newBooking);
         }
 
@@ -159,7 +166,7 @@ namespace Labb_3___WPF_Applikation
 
             string bookingToCancel = selectedBooking.ToStorageFormat();
             fileHandler.CancelBooking(bookingToCancel);
-
+            //fileHandler.CancelBooking(selectedBooking);
             MessageBox.Show("Avbokat!");
 
             UpdateBookingListAsync();
@@ -186,7 +193,7 @@ namespace Labb_3___WPF_Applikation
             foreach (var booking in query)
             {
                 AddToList(booking);
-                await Task.Delay(10);
+                //await Task.Delay(10);
             }
         }
         private void AddToList(Booking booking)
