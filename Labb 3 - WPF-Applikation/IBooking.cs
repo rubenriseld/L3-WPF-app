@@ -13,6 +13,5 @@ namespace Labb_3___WPF_Applikation
         public DateTime bookingDateTime { get; set; }
         
         string ToStorageFormat();
-        string ToDisplayFormat();
     }
 }

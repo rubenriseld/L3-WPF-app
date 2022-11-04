@@ -28,12 +28,13 @@ namespace Labb_3___WPF_Applikation
             foreach (var storedBooking in bookings)
             {
                 //varje bokning gäller 2 timmar från bokad tid
+                //(1h59m så det går att boka en tid 2 timmar efter på samma bord)
                 //och det går därför inte att boka en ny tid på samma bord
                 //inom 2 timmar före eller efter en tidigare bokning
                 if (booking.tableNumber == storedBooking.tableNumber)
                 {
-                    if (booking.bookingDateTime >= storedBooking.bookingDateTime.AddHours(-2)
-                    && booking.bookingDateTime <= storedBooking.bookingDateTime.AddHours(2))
+                    if (booking.bookingDateTime >= storedBooking.bookingDateTime.AddHours(-1).AddMinutes(-59)
+                    && booking.bookingDateTime <= storedBooking.bookingDateTime.AddHours(1).AddMinutes(59))
                     {
                         MessageBox.Show($"Bord nummer {booking.tableNumber}" +
                             $" är redan bokat den {booking.bookingDateTime.ToString("dd/MM/yy")}" +
@@ -62,6 +63,11 @@ namespace Labb_3___WPF_Applikation
             File.Move(tempFile, "bookings.txt");
         }
 
+
+        //--------------------
+        //TODO:
+        //_--------------------
+        //lägga till alla bokningar asynkront, lista med tasks?
         async internal Task<List<Booking>> GetBookingsAsync()
         {
             string line = "";
