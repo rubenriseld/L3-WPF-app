@@ -20,13 +20,16 @@ namespace Labb_3___WPF_Applikation
             //unikt bokningsID
             this.bookingID = bookingID;
         }
+        
+        //textformatering för lagring
         public string ToStorageFormat()
         {
             return $"{name},{tableNumber},{bookingDateTime},{bookingID}";
         }
+        
+        //textformatering för bokningar som ska in i listboxen
         public string ToDisplayFormat()
         {
-            //string dateTimeDisplay = bookingDateTime.Year.ToString() + "/" + bookingDateTime.Month.ToString() + "/" + bookingDateTime.Day.ToString();
             return $"Namn: {name}\n" +
                     $"Bordsnummer: {tableNumber}\n" +
                     $"Tid: {bookingDateTime.ToString("HH:mm")}\n" +
