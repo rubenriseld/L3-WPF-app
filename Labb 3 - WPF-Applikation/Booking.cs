@@ -11,13 +11,14 @@ namespace Labb_3___WPF_Applikation
         public string name { get; set; }
         public int tableNumber { get; set; }
         public DateTime bookingDateTime { get; set; }
+
+        //unikt bokningsID
         private readonly string bookingID;
         public Booking(string name, int tableNumber, DateTime bookingDateTime, string bookingID)
         {
             this.name = name;
             this.tableNumber = tableNumber;
             this.bookingDateTime = bookingDateTime;
-            //unikt bokningsID
             this.bookingID = bookingID;
         }
         
